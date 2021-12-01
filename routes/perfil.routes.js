@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 
-const profileRoute = express.Router();
+//Import express-promise-router, el router clásico no gestiona las promesas.
+const profileRoute = require('express-promise-router')();
 const { Profile }  = require('../model/perfil');
 
 // Add Profil
@@ -23,7 +24,9 @@ profileRoute.route('/perfil').get( async (req, res) => {
         } else {
             res.json(data)
         }
-    })
+
+    //https://stackoverflow.com/questions/68945315/mongooseerror-query-was-already-executed
+    }).clone().catch(function(err){ console.log(err)})  
 })
 // Get Profil
 profileRoute.route('/perfil/:id').get(async(req, res) => {
@@ -33,7 +36,9 @@ profileRoute.route('/perfil/:id').get(async(req, res) => {
         } else {
             res.json(data)
         }
-    })
+
+    //https://stackoverflow.com/questions/68945315/mongooseerror-query-was-already-executed
+    }).clone().catch(function(err){ console.log(err)}) 
 })
 
 
