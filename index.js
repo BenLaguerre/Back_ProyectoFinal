@@ -1,8 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
-//const mongoose = require('mongoose');
-// const dbConfig = require('./config/database.config');
+
+var cors = require('cors');
+
+const dbconnect = require("./database/mongo");
+
+const profileRoute = require('./routes/perfil.routes');
+const { Profile } = require('./model/perfil');
 
 const app = express();
 
@@ -11,7 +16,16 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(cors({
+  origin: 'http://localhost:4200',
+  //credentials: true, 
+  origin: true
+}));
+
 const server = http.createServer(app);
+
+// API root
+app.use('/', profileRoute)
 
 app.get("/", function (req, res) {
   res.send("Estamos en localhost:8000, se prendio mon ua")
