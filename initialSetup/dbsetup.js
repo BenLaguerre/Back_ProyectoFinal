@@ -1,5 +1,5 @@
 //Archivo usado para rellenar la base de datos desde la API de randomUser();
-
+/*
 const dbconnect = require("../database/mongo");
 
 const fetch = require("node-fetch");
@@ -66,3 +66,5 @@ function randMusic(){
 function randBio(){
   return description[Math.floor(Math.random() * 10)]
 }
+
+*/

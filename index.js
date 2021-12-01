@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 
+var cors = require('cors');
+
 const dbconnect = require("./database/mongo");
 
 const profileRoute = require('./routes/perfil.routes');
@@ -12,6 +14,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
+}));
+
+app.use(cors({
+  origin: 'http://localhost:4200',
+  //credentials: true, 
+  origin: true
 }));
 
 const server = http.createServer(app);
