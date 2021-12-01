@@ -28,6 +28,34 @@ profileRoute.route('/perfil').get( async (req, res) => {
     //https://stackoverflow.com/questions/68945315/mongooseerror-query-was-already-executed
     }).clone().catch(function(err){ console.log(err)})  
 })
+
+// select Profil
+profileRoute.route('/seleccion/:id').get(async(req, res) => {
+    await Profile.find({id: req.params.id}, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+
+    //https://stackoverflow.com/questions/68945315/mongooseerror-query-was-already-executed
+    }).clone().catch(function(err){ console.log(err)}) 
+})
+
+// select detalle perfil
+profileRoute.route('/detalle-perfil/:id').get(async(req, res) => {
+    await Profile.find({id: req.params.id}, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+
+    //https://stackoverflow.com/questions/68945315/mongooseerror-query-was-already-executed
+    }).clone().catch(function(err){ console.log(err)}) 
+})
+
+
 // Get Profil
 profileRoute.route('/perfil/:id').get(async(req, res) => {
     await Profile.find({id: req.params.id}, (error, data) => {
