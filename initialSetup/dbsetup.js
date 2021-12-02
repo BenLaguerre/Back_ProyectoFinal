@@ -43,7 +43,7 @@ function profiles () {
       age: age(),
       email: profil.email,
       city: profil.location.city,
-      image: profil.picture.medium
+      image: profil.picture.large
     });
      filer.save();
   }

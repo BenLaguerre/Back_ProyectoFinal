@@ -17,7 +17,7 @@ profileRoute.route('/add-perfil').post((req, res, next) => {
 });
 
 // Get all Profil
-profileRoute.route('/perfil').get( async (req, res) => {
+profileRoute.route('/perfil').get( async (req, res , next) => {
     await Profile.find((error, data) => {
         if (error) {
             return next(error)
@@ -30,7 +30,7 @@ profileRoute.route('/perfil').get( async (req, res) => {
 })
 
 // select Profil
-profileRoute.route('/home/:id').get(async(req, res) => {
+profileRoute.route('/home/:id').get(async(req, res,  next) => {
     await Profile.find({id: req.params.id}, (error, data) => {
         if (error) {
             return next(error)
@@ -43,8 +43,22 @@ profileRoute.route('/home/:id').get(async(req, res) => {
 })
 
 // select detalle perfil
-profileRoute.route('/detalle-perfil/:id').get(async(req, res) => {
+profileRoute.route('/detalle-perfil/:id').get(async(req, res, next) => {
     await Profile.find({id: req.params.id}, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+
+    //https://stackoverflow.com/questions/68945315/mongooseerror-query-was-already-executed
+    }).clone().catch(function(err){ console.log(err)}) 
+})
+
+profileRoute.route('/detalle-perfil').get(async(req, res, next) => {
+    let email = req.query.email
+    console.log(email)
+    await Profile.find({email :email},(error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -57,7 +71,7 @@ profileRoute.route('/detalle-perfil/:id').get(async(req, res) => {
 
 
 // Get Profil
-profileRoute.route('/perfil/:id').get(async(req, res) => {
+profileRoute.route('/perfil/:id').get(async(req, res, next) => {
     await Profile.find({id: req.params.id}, (error, data) => {
         if (error) {
             return next(error)
