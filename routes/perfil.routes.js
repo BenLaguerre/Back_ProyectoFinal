@@ -30,7 +30,7 @@ profileRoute.route('/perfil').get( async (req, res) => {
 })
 
 // select Profil
-profileRoute.route('/seleccion/:id').get(async(req, res) => {
+profileRoute.route('/home/:id').get(async(req, res) => {
     await Profile.find({id: req.params.id}, (error, data) => {
         if (error) {
             return next(error)
