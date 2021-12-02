@@ -40,7 +40,7 @@ function profiles () {
       description: randBio(),
       music: randMusic(),
       gender: profil.gender,
-      age: profil.age,
+      age: age(),
       email: profil.email,
       city: profil.location.city,
       image: profil.picture.medium
@@ -60,11 +60,14 @@ const { description } = require('./bioMusic');
 
 
 function randMusic(){
-  return music[Math.floor(Math.random() * 6)]
+  return music[Math.floor(Math.random() * 8)]
 }
 
 function randBio(){
   return description[Math.floor(Math.random() * 10)]
 }
 
+function age(){
+  return Math.floor(Math.random()*(45-22)+22)
+}
 */

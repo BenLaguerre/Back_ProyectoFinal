@@ -12,12 +12,14 @@ let description = [
 ]
 
 let music = [
-  "Rock",
-  "Classic",
-  "Rap",
-  "Electronical",
-  "Jazz",
-  "Super spacewave synthchill new retro 80s"
+  "Electronica",
+  "Pop",
+  "Metal",
+  "Alternativa",
+  "Indie",
+  "Reggeton",
+  "Synthwave",
+  "Clasica"
 ]
 
 module.exports = {music, description}

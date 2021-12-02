@@ -15,7 +15,7 @@ let profileSchema = new Schema({
     gender: {
         type: String
     },
-    edad: {
+    age: {
         type: Number
     },
     email: {
@@ -32,6 +32,12 @@ let profileSchema = new Schema({
     },
     music: {
         type: String
+    },
+    arrayLikes : {
+        type: Array
+    },
+    arrayDislikes : {
+        type: Array
     }
 })
 
