@@ -33,16 +33,14 @@
                 }
             }
         },
-        "/perfil/{id}":{
-            "parameters": [
-                {
-                  "name": "id",
-                  "in": "path",
-                  "required": true,
-                  "description": "ID del perfil que quiero buscar",
-                  "type": "integer"
-                }
-              ],
+        "/perfil/{id}": {
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID del perfil que quiero buscar",
+                "type": "integer"
+            }],
             "get": {
                 "tags": ["Perfiles"],
                 "summary": "Trae un perfil de la BBDD",
@@ -82,42 +80,71 @@
             }
         },
         "/update-perfil/{id}": {
-            "parameters": [
-              {
+            "parameters": [{
                 "name": "id",
                 "in": "path",
                 "required": true,
                 "description": "ID del perfil que quiero actualizar",
                 "type": "string"
-              }
-            ],
+            }],
             "put": {
-              "summary": "Actualizar un perfil mediante un ID",
-              "tags": ["Perfiles"],
-              "parameters": [
-                {
-                  "name": "perfil",
-                  "in": "body",
-                  "description": "Perfil con nuevos valores",
-                  "schema": {
-                    "$ref": "#/definitions/updatePerfil"
-                  }
+                "summary": "Actualizar un perfil mediante un ID",
+                "tags": ["Perfiles"],
+                "parameters": [{
+                    "name": "perfil",
+                    "in": "body",
+                    "description": "Perfil con nuevos valores",
+                    "schema": {
+                        "$ref": "#/definitions/updatePerfil"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "El perfil está actualizado",
+                        "schema": {
+                            "$ref": "#/definitions/Perfil"
+                        }
+                    }
                 }
-              ],
-              "responses": {
-                "200": {
-                  "description": "El perfil está actualizado",
-                  "schema": {
-                    "$ref": "#/definitions/Perfil"
-                  }
-                }
-              }
             }
-          }
+        },
+        "/delete-perfil/:id": {
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID del perfil que quiero eliminar",
+                "type": "string"
+            }],
+            "delete":{
+                "summary": "Eliminar un perfil dado un ID",
+                "tags": ["Perfiles"],
+                "responses": {
+                    "200": {
+                        "description": "El perfil está eliminado",
+                        "schema": {
+                            "$ref": "#/definitions/Perfil"
+                        }
+                    }
+                }
+            } 
+        }
     },
     "definitions": {
         "Perfil": {
-            "required": ["id", "name", "gender", "age", "email", "city", "description", "image", "music", "arrayLikes", "arrayDislikes"],
+            "required": [
+                "id",
+                "name",
+                "gender",
+                "age",
+                "email",
+                "city",
+                "description",
+                "image",
+                "music",
+                "arrayLikes",
+                "arrayDislikes"
+            ],
             "properties": {
                 "name": {
                     "type": "array",
@@ -169,7 +196,16 @@
             }
         },
         "addPerfil": {
-            "required": ["name", "gender", "age", "email", "city", "description", "image", "music"],
+            "required": [
+                "name",
+                "gender",
+                "age",
+                "email",
+                "city",
+                "description",
+                "image",
+                "music"
+            ],
             "properties": {
                 "name": {
                     "type": "array",
@@ -209,7 +245,18 @@
             }
         },
         "updatePerfil": {
-            "required": ["name", "gender", "age", "email", "city", "description", "image", "music", "arrayLikes", "arrayDislikes"],
+            "required": [
+                "name",
+                "gender",
+                "age",
+                "email",
+                "city",
+                "description",
+                "image",
+                "music",
+                "arrayLikes",
+                "arrayDislikes"
+            ],
             "properties": {
                 "name": {
                     "type": "array",
@@ -259,5 +306,4 @@
             "$ref": "#/definitions/Perfil"
         }
     }
-
 }
