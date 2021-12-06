@@ -13,7 +13,7 @@
     "basePath": "/",
     "tags": [{
         "name": "Perfiles",
-        "description": "API de usuarios de nuestro LechonMatch"
+        "description": "API de perfiles de nuestro LechonMatch"
     }],
     "schemes": ["http"],
     "consumes": ["application/json"],
@@ -108,7 +108,7 @@
                 }
             }
         },
-        "/delete-perfil/:id": {
+        "/delete-perfil/{id}": {
             "parameters": [{
                 "name": "id",
                 "in": "path",

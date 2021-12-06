@@ -103,7 +103,7 @@ profileRoute.route('/update-perfil/:id').put(async(req, res) => {
     });
 });
 
-
+// EL DELETE FUNCIONA CON EL ID DEL MONGOOSE
 // Delete Profil
 profileRoute.route('/delete-perfil/:id').delete((req, res, next) => {
     Profile.findByIdAndRemove(req.params.id, (error, data) => {
