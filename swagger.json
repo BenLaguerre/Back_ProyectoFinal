@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "LechonMatch",
-        "description": "Aplicación LechonMatch",
+        "title": "CRUD LechonMatch",
+        "description": "Documentación del CRUD de LechonMatch",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
@@ -33,6 +33,30 @@
                 }
             }
         },
+        "/perfil/{id}":{
+            "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "description": "ID del perfil que quiero buscar",
+                  "type": "integer"
+                }
+              ],
+            "get": {
+                "tags": ["Perfiles"],
+                "summary": "Trae un perfil de la BBDD",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Perfiles"
+                        }
+                    }
+                }
+            }
+        },
+
         "/add-perfil": {
             "post": {
                 "tags": ["Perfiles"],
@@ -56,7 +80,40 @@
                     }
                 }
             }
-        }
+        },
+        "/update-perfil/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID del perfil que quiero actualizar",
+                "type": "string"
+              }
+            ],
+            "put": {
+              "summary": "Actualizar un perfil mediante un ID",
+              "tags": ["Perfiles"],
+              "parameters": [
+                {
+                  "name": "perfil",
+                  "in": "body",
+                  "description": "Perfil con nuevos valores",
+                  "schema": {
+                    "$ref": "#/definitions/updatePerfil"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "El perfil está actualizado",
+                  "schema": {
+                    "$ref": "#/definitions/Perfil"
+                  }
+                }
+              }
+            }
+          }
     },
     "definitions": {
         "Perfil": {
@@ -148,6 +205,52 @@
                 },
                 "music": {
                     "type": "string"
+                }
+            }
+        },
+        "updatePerfil": {
+            "required": ["name", "gender", "age", "email", "city", "description", "image", "music", "arrayLikes", "arrayDislikes"],
+            "properties": {
+                "name": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "number"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "music": {
+                    "type": "string"
+                },
+                "arrayLikes": {
+                    "type": "array"
+                },
+                "arrayDislikes": {
+                    "type": "array"
                 }
             }
         },
