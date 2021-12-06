@@ -32,6 +32,30 @@
                     }
                 }
             }
+        },
+        "/add-perfil": {
+            "post": {
+                "tags": ["Perfiles"],
+                "description": "Crear un nuevo perfil",
+                "summary": "Crea un nuevo perfil en la BBDD",
+                "parameters": [{
+                    "name": "perfil",
+                    "in": "body",
+                    "description": "Perfil que queremos crear",
+                    "schema": {
+                        "$ref": "#/definitions/addPerfil"
+                    }
+                }],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Nuevo perfil creado",
+                        "schema": {
+                            "$ref": "#/definitions/addPerfil"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -83,7 +107,47 @@
                     "type": "array"
                 },
                 "id": {
-                    "type":"number"
+                    "type": "number"
+                }
+            }
+        },
+        "addPerfil": {
+            "required": ["name", "gender", "age", "email", "city", "description", "image", "music"],
+            "properties": {
+                "name": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "number"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "music": {
+                    "type": "string"
                 }
             }
         },
