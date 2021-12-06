@@ -13,7 +13,7 @@
     "basePath": "/",
     "tags": [{
         "name": "Perfiles",
-        "description": "API for users in the system"
+        "description": "API de usuarios de nuestro LechonMatch"
     }],
     "schemes": ["http"],
     "consumes": ["application/json"],
@@ -38,13 +38,10 @@
         "Perfil": {
             "required": ["id", "name", "gender", "age", "email", "city", "description", "image", "music", "arrayLikes", "arrayDislikes"],
             "properties": {
-                "id": {
-                    "type": "Number"
-                },
                 "name": {
                     "type": "array",
                     "items": {
-                        "type": "Object",
+                        "type": "object",
                         "properties": {
                             "firstName": {
                                 "type": "string"
@@ -55,11 +52,14 @@
                         }
                     }
                 },
+                "_id": {
+                    "type": "number"
+                },
                 "gender": {
                     "type": "string"
                 },
                 "age": {
-                    "type": "Number"
+                    "type": "number"
                 },
                 "email": {
                     "type": "string"
@@ -81,6 +81,9 @@
                 },
                 "arrayDislikes": {
                     "type": "array"
+                },
+                "id": {
+                    "type":"number"
                 }
             }
         },
