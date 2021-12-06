@@ -85,9 +85,9 @@ profileRoute.route('/perfil/:id').get(async(req, res, next) => {
 
 
 // Update Profil
-profileRoute.route('/update-perfil/:id').put(async(req, res, next) => {
+profileRoute.route('/update-perfil/:id').put(async(req, res) => {
     const id = req.params.id;
-    console.log(req.body)
+    
     await Profile.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
