@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "LechonMatch",
+        "description": "Aplicación LechonMatch",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "tags": [{
+        "name": "Perfiles",
+        "description": "API for users in the system"
+    }],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/perfil": {
+            "get": {
+                "tags": ["Perfiles"],
+                "summary": "Trae los perfiles de la BBDD",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Perfiles"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Perfil": {
+            "required": ["id", "name", "gender", "age", "email", "city", "description", "image", "music", "arrayLikes", "arrayDislikes"],
+            "properties": {
+                "id": {
+                    "type": "Number"
+                },
+                "name": {
+                    "type": "array",
+                    "items": {
+                        "type": "Object",
+                        "properties": {
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "Number"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "music": {
+                    "type": "string"
+                },
+                "arrayLikes": {
+                    "type": "array"
+                },
+                "arrayDislikes": {
+                    "type": "array"
+                }
+            }
+        },
+        "Perfiles": {
+            "type": "array",
+            "$ref": "#/definitions/Perfil"
+        }
+    }
+
+}

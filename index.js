@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 
+//swagger
+const swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('./swagger.json');
+
 var cors = require('cors');
 
 const dbconnect = require("./database/mongo");
@@ -30,6 +34,13 @@ app.use('/', profileRoute)
 app.get("/", function (req, res) {
   res.send("Estamos en localhost:8000, se prendio mon ua")
 })
+
+//swagger
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
+);
 
 server.listen(8000, function () {
   console.info(`Server is up and running on port 8000`)
