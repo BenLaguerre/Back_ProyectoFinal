@@ -32,7 +32,7 @@ const server = http.createServer(app);
 app.use('/', profileRoute)
 
 app.get("/", function (req, res) {
-  res.send("Estamos en localhost:8000, se prendio mon ua")
+  res.send("Estamos en localhost:3001, se prendio mon ua")
 })
 
 //swagger
@@ -42,6 +42,6 @@ app.use(
   swaggerUi.setup(swaggerDocument)
 );
 
-server.listen(8000, function () {
-  console.info(`Server is up and running on port 8000`)
+server.listen(3001, function () {
+  console.info(`Server is up and running on port 3001`)
 });
